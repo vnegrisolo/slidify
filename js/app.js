@@ -4,7 +4,6 @@ class App {
   constructor() {
     let body = document.getElementsByTagName("body")[0];
     let pre = body.getElementsByTagName("pre")[0];
-    let el = pre || body;
     let page = 1;
     let converter = new showdown.Converter({
       emoji: true,
@@ -12,14 +11,14 @@ class App {
     });
     let regexp = /^<!--(.*)-->$/sm;
 
-    let slides = el.textContent.split("---\n").map(s => {
+    let slides = (pre || body).textContent.split("---\n").map(s => {
       return {
         content: s.replace(regexp, "").replace(/\n\n\n+/, "\n\n").trim(),
         comment: ((s.match(regexp) || [])[1] || "").trim()
       };
     })
 
-    this.state = { converter, el, page, slides }
+    this.state = { converter, body, page, slides }
   }
   init() {
     this.listenKeyPresses();
@@ -42,16 +41,18 @@ class App {
     this.render();
   }
   render() {
-    let {converter, el, slides, page} = this.state;
+    let {converter, body, slides, page} = this.state;
     let slide = slides[page - 1];
     let html = converter.makeHtml(slide.content);
+
+    console.clear();
     if(slide.comment && slide.comment != "") {
       console.log(slide.comment);
     }
 
-    el.innerHTML = html;
+    body.innerHTML = html;
 
-    el.querySelectorAll("pre code").forEach((block) => {
+    body.querySelectorAll("pre code").forEach((block) => {
       Prism.highlightElement(block);
     });
   }
