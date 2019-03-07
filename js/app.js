@@ -8,6 +8,7 @@ class App {
     let page = 1;
 
     this.state = {
+      converter: new showdown.Converter(),
       el: el,
       page: page,
       slides: el.innerHTML.split("---").map(s => s.trim())
@@ -34,8 +35,11 @@ class App {
     this.render();
   }
   render() {
-    let {el, slides, page} = this.state;
-    el.innerHTML = slides[page - 1];
+    let {converter, el, slides, page} = this.state;
+    let text = slides[page - 1];
+    let html = converter.makeHtml(text);
+
+    el.innerHTML = html;
   }
 }
 

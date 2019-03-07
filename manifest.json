@@ -5,7 +5,7 @@
   },
   "content_scripts": [{
     "matches": ["file://*/*.md"],
-    "js": ["js/app.js"],
+    "js": ["js/app.js", "node_modules/showdown/dist/showdown.min.js"],
     "css": ["css/app.css"]
   }],
   "description": "Slidify",
