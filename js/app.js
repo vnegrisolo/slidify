@@ -8,7 +8,7 @@ class App {
     let page = 1;
 
     this.state = {
-      converter: new showdown.Converter(),
+      converter: new showdown.Converter({emoji: true}),
       el: el,
       page: page,
       slides: el.innerHTML.split("---").map(s => s.trim())
