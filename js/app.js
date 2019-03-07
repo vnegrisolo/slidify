@@ -6,10 +6,13 @@ class App {
     let pre = body.getElementsByTagName("pre")[0];
     let el = pre || body;
     let page = 1;
-    let converter = new showdown.Converter({emoji: true});
+    let converter = new showdown.Converter({
+      emoji: true,
+      tables: true
+    });
     let regexp = /^<!--(.*)-->$/sm;
 
-    let slides = el.textContent.split("---").map(s => {
+    let slides = el.textContent.split("---\n").map(s => {
       return {
         content: s.replace(regexp, "").replace(/\n\n\n+/, "\n\n").trim(),
         comment: ((s.match(regexp) || [])[1] || "").trim()
