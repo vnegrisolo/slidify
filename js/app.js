@@ -6,13 +6,17 @@ class App {
     let pre = body.getElementsByTagName("pre")[0];
     let el = pre || body;
     let page = 1;
+    let converter = new showdown.Converter({emoji: true});
+    let regexp = /^<!--(.*)-->$/sm;
 
-    this.state = {
-      converter: new showdown.Converter({emoji: true}),
-      el: el,
-      page: page,
-      slides: el.innerHTML.split("---").map(s => s.trim())
-    }
+    let slides = el.textContent.split("---").map(s => {
+      return {
+        content: s.replace(regexp, "").replace(/\n\n\n+/, "\n\n").trim(),
+        comment: ((s.match(regexp) || [])[1] || "").trim()
+      };
+    })
+
+    this.state = { converter, el, page, slides }
   }
   init() {
     this.listenKeyPresses();
@@ -36,8 +40,11 @@ class App {
   }
   render() {
     let {converter, el, slides, page} = this.state;
-    let text = slides[page - 1];
-    let html = converter.makeHtml(text);
+    let slide = slides[page - 1];
+    let html = converter.makeHtml(slide.content);
+    if(slide.comment && slide.comment != "") {
+      console.log(slide.comment);
+    }
 
     el.innerHTML = html;
   }
