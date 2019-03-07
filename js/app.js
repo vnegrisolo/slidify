@@ -47,6 +47,10 @@ class App {
     }
 
     el.innerHTML = html;
+
+    el.querySelectorAll("pre code").forEach((block) => {
+      Prism.highlightElement(block);
+    });
   }
 }
 
