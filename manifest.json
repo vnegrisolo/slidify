@@ -4,7 +4,7 @@
     "persistent": false
   },
   "content_scripts": [{
-    "matches": ["<all_urls>"],
+    "matches": ["file://*/*.md"],
     "js": ["js/app.js"],
     "css": ["css/app.css"]
   }],
