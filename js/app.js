@@ -40,6 +40,15 @@ class App {
     history.pushState({}, `Page ${page}`, `#${page}`);
     this.render();
   }
+  toogleClass(el, class1, class2) {
+    if(el.classList.contains(class1)){
+      el.classList.add(class2);
+      el.classList.remove(class1);
+    } else {
+      el.classList.add(class1);
+      el.classList.remove(class2);
+    }
+  }
   listenKeyPresses() {
     window.addEventListener("keydown", e => {
       let {slides} = this.state;
@@ -50,6 +59,10 @@ class App {
       }
       if (e.key === "ArrowLeft" && page > 1){
         this.pushHistory(page - 1);
+      }
+      if (e.key === "T"){
+        let body = document.getElementsByTagName("body")[0];
+        this.toogleClass(body, "solarized-light", "solarized-dark")
       }
     });
   }

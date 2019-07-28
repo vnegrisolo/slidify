@@ -16,7 +16,11 @@ Open a `md` file, here's my example:
 open -a "Google Chrome" README.md
 ```
 
-## Let's move on to markdown examples:
+### Shortkeys
+
+- `Arrow right` => move to the next slide
+- `Arrow left` => move to the previous slide
+- `T` => change solarized themes between dark and light
 
 Please move to the next slide using the right arrow.
 ---
@@ -32,6 +36,8 @@ Some paragraph very very very very very very very very very very very very very 
 ---
 
 # Code snippets
+
+Here's some `inline code` example and also our code block snippet:
 
 ```elixir
 defmodule FooBar do
