@@ -3,11 +3,21 @@ console.log("app.js", "Hello World!");
 class App {
   constructor() {
     let body = document.getElementsByTagName("body")[0];
+    body.classList.add("solarized-light");
     let pre = body.getElementsByTagName("pre")[0];
     let page = 1;
+    const classMap = {
+      pre: 'line-numbers'
+    }
+    const bindings = Object.keys(classMap).map(key => ({
+      type: 'output',
+      regex: new RegExp(`<${key}(.*)>`, 'g'),
+      replace: `<${key} class="${classMap[key]}" $1>`
+    }));
     let converter = new showdown.Converter({
       emoji: true,
-      tables: true
+      tables: true,
+      extensions: [...bindings]
     });
     let regexp = /^<!--(.*)-->$/sm;
 
