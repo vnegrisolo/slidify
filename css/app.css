@@ -1,7 +1,7 @@
 body {
   font-family: "Helvetica Neue", "Helvetica", "Arial", "sans-serif";
   font-size: 20px;
-  margin: 3rem;
+  margin: 2rem;
 }
 
 body.solarized-light {
@@ -20,7 +20,7 @@ body.solarized-dark div.code-toolbar pre {
   background-color: #002B36;
 }
 
-h1, h2 {
+h1, h2, h3 {
   font-family: "PT Serif Caption", "PT Serif", "Times New Roman", "Times";
 }
 
@@ -30,6 +30,10 @@ table th, table td {
 }
 
 table tbody tr:hover {
+  opacity: 0.5;
+}
+
+ul li:hover, ol li:hover {
   opacity: 0.5;
 }
 

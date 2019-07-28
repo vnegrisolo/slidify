@@ -5,7 +5,6 @@ class App {
     let body = document.getElementsByTagName("body")[0];
     body.classList.add("solarized-light");
     let pre = body.getElementsByTagName("pre")[0];
-    let page = 1;
     const classMap = {
       pre: 'line-numbers'
     }
@@ -28,38 +27,40 @@ class App {
       };
     })
 
-    this.state = { converter, body, page, slides }
+    this.state = { converter, body, slides }
   }
   init() {
     this.listenKeyPresses();
     this.render();
   }
+  getPage() {
+    return parseInt(window.location.hash.substring(1) || "1");
+  }
+  pushHistory(page) {
+    history.pushState({}, `Page ${page}`, `#${page}`);
+    this.render();
+  }
   listenKeyPresses() {
     window.addEventListener("keydown", e => {
-      let {page, slides} = this.state;
+      let {slides} = this.state;
+      let page = this.getPage();
 
       if (e.key === "ArrowRight" && page < slides.length){
-        this.setState("page", page + 1);
+        this.pushHistory(page + 1);
       }
       if (e.key === "ArrowLeft" && page > 1){
-        this.setState("page", page - 1);
+        this.pushHistory(page - 1);
       }
     });
   }
-  setState(key, value) {
-    this.state[key] = value;
-    this.render();
-  }
   render() {
-    let {converter, body, slides, page} = this.state;
+    let {converter, body, slides} = this.state;
+    let page = this.getPage();
     let slide = slides[page - 1];
     let html = converter.makeHtml(slide.content);
 
     console.clear();
-    if(slide.comment && slide.comment != "") {
-      console.log(slide.comment);
-    }
-
+    slide.comment && console.log(slide.comment);
     body.innerHTML = html;
 
     body.querySelectorAll("pre code").forEach((block) => {

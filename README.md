@@ -19,9 +19,8 @@ open -a "Google Chrome" README.md
 ## Let's move on to markdown examples:
 
 Please move to the next slide using the right arrow.
-
 ---
-
+<!-- Start by checking this slide comment, this might help -->
 # Texts h1
 
 ## Texts h2
@@ -42,6 +41,20 @@ defmodule FooBar do
   end
 end
 ```
+
+---
+
+# Here's some list:
+
+regular list:
+
+- item 1
+- item 2
+
+ordered list:
+
+1. item 1
+1. item 2
 
 ---
 
