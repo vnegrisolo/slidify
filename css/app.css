@@ -4,29 +4,24 @@ body {
   margin: 2rem;
 }
 
-body.solarized-light {
-  background-color: #EEE8D5;
-  color: #586E75;
-}
-body.solarized-light div.code-toolbar pre, body.solarized-light code {
-  background-color: #FDF6E3;
-  padding: 0.1rem 0.3rem;
-}
-
-body.solarized-dark {
-  background-color: #073642;
-  color: #93A1A1;
-}
-body.solarized-dark div.code-toolbar pre, body.solarized-dark code {
-  background-color: #002B36;
-  padding: 0.1rem 0.3rem;
-}
-
-h1, h2, h3 {
+h1,
+h2,
+h3 {
   font-family: "PT Serif Caption", "PT Serif", "Times New Roman", "Times";
 }
 
-table th, table td {
+blockquote {
+  border-left: 4px solid #586E75;
+  padding: 1rem 2rem;
+  margin: 2rem 0;
+}
+
+code {
+  padding: 0.2rem 0.6rem;
+}
+
+table th,
+table td {
   padding: 0.8rem;
   border-bottom: 1px solid #586E75;
 }
@@ -35,10 +30,33 @@ table tbody tr:hover {
   opacity: 0.5;
 }
 
-ul li:hover, ol li:hover {
+ul li:hover,
+ol li:hover {
   opacity: 0.5;
 }
 
-div.code-toolbar > .toolbar {
+div.code-toolbar>.toolbar {
   opacity: 1 !important;
+}
+
+body.solarized-light {
+  background-color: #EEE8D5;
+  color: #586E75;
+}
+
+body.solarized-light div.code-toolbar pre,
+body.solarized-light code,
+body.solarized-light blockquote {
+  background-color: #FDF6E3;
+}
+
+body.solarized-dark {
+  background-color: #073642;
+  color: #93A1A1;
+}
+
+body.solarized-dark div.code-toolbar pre,
+body.solarized-dark code,
+body.solarized-dark blockquote {
+  background-color: #002B36;
 }

@@ -27,7 +27,11 @@ class App {
       };
     })
 
-    this.state = { converter, body, slides }
+    this.state = {
+      converter,
+      body,
+      slides
+    }
   }
   init() {
     this.listenKeyPresses();
@@ -41,7 +45,7 @@ class App {
     this.render();
   }
   toogleClass(el, class1, class2) {
-    if(el.classList.contains(class1)){
+    if (el.classList.contains(class1)) {
       el.classList.add(class2);
       el.classList.remove(class1);
     } else {
@@ -51,23 +55,29 @@ class App {
   }
   listenKeyPresses() {
     window.addEventListener("keydown", e => {
-      let {slides} = this.state;
+      let {
+        slides
+      } = this.state;
       let page = this.getPage();
 
-      if (e.key === "ArrowRight" && page < slides.length){
+      if (e.key === "ArrowRight" && page < slides.length) {
         this.pushHistory(page + 1);
       }
-      if (e.key === "ArrowLeft" && page > 1){
+      if (e.key === "ArrowLeft" && page > 1) {
         this.pushHistory(page - 1);
       }
-      if (e.key === "T"){
+      if (e.key === "T") {
         let body = document.getElementsByTagName("body")[0];
         this.toogleClass(body, "solarized-light", "solarized-dark")
       }
     });
   }
   render() {
-    let {converter, body, slides} = this.state;
+    let {
+      converter,
+      body,
+      slides
+    } = this.state;
     let page = this.getPage();
     let slide = slides[page - 1];
     let html = converter.makeHtml(slide.content);

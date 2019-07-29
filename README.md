@@ -33,6 +33,18 @@ Please move to the next slide using the right arrow.
 
 Some paragraph very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very long.
 
+With some emojis :+1:
+
+- [A Link](#)
+- *Some italic*
+- **Some bold**
+
+Quote:
+
+> Coffee. The finest organic suspension ever devised... I beat the Borg with it.
+>
+> -- Captain Janeway
+
 ---
 
 # Code snippets
@@ -60,14 +72,25 @@ regular list:
 ordered list:
 
 1. item 1
-1. item 2
+2. item 2
+
+Checklist:
+
+- [x] This is a complete item
+- [ ] This is an incomplete item
 
 ---
 
 # Here's some table:
 
-| Header One     | Header Two     |
-| :------------- | :------------- |
-| Item One       | Item Two       |
-| Item One       | Item Two       |
-| Item One       | Item Two       |
+| Header One | Header Two | Header Three |
+| :--------- | ---------: | :----------: |
+| One        |        Two |    Three     |
+| One        |        Two |    Three     |
+| One        |        Two |    Three     |
+
+---
+
+# Here's some image:
+
+![Image of Yaktocat](https://octodex.github.com/images/yaktocat.png)
